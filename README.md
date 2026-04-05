@@ -25,10 +25,10 @@ Push to `main` — GitHub Actions builds and deploys automatically.
 
 ```
 _workouts/          workout content (Jekyll collection)
+_pages/             homepage, category index pages (Jekyll collection)
 _layouts/           page templates
 _plugins/           base64_filter.rb for import link generation
 assets/             CSS and JS
-pages/              homepage, category index pages
 _config.yml
 ```
 
