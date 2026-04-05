@@ -1,13 +1,28 @@
-url: "https://www.gymscript.app"
+title: GymScript Workout Library
+description: >-
+  Free ready-to-run workout scripts for the GymScript app.
+  Browse by category, copy a script, and open it directly in the app.
+url: https://www.gymscript.app
+baseurl: ""
 
 collections:
   workouts:
     output: true
     permalink: /workouts/:path/
 
+defaults:
+  - scope:
+      path: ""
+      type: workouts
+    values:
+      layout: workout
+
 plugins:
   - jekyll-sitemap
 
 exclude:
-  - docs/
+  - Gemfile
+  - Gemfile.lock
+  - tests/
   - vendor/
+  - docs/
