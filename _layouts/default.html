@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title | escape }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="container">
+      <a href="{{ '/' | relative_url }}" class="nav-logo">GymScript Workouts</a>
+      <ul class="nav-links" role="list">
+        <li><a href="{{ '/workouts/' | relative_url }}">Workouts</a></li>
+        <li><a href="https://gymscript.app" rel="noopener">Get the App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Free workouts for the <a href="https://gymscript.app" rel="noopener">GymScript app</a></p>
+      <div class="footer-store-links">
+        <a href="https://apps.apple.com/app/gymscript/id6751173133" rel="noopener noreferrer">Download on the App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript" rel="noopener noreferrer">Get it on Google Play</a>
+      </div>
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} GymScript</p>
+    </div>
+  </footer>
+</body>
+</html>
