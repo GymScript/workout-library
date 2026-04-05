@@ -17,6 +17,18 @@ layout: default
     {% endif %}
   </header>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+      {"@type": "ListItem", "position": 2, "name": "Workouts", "item": "{{ site.url }}/workouts/"},
+      {"@type": "ListItem", "position": 3, "name": "{{ page.title | escape }}"}
+    ]
+  }
+  </script>
+
   {% assign workouts = site.workouts | where: "category", page.slug | sort: "title" %}
   {% if workouts.size > 0 %}
   <ul class="workout-grid" role="list">

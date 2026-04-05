@@ -16,6 +16,7 @@ defaults:
       type: workouts
     values:
       layout: workout
+      og_type: article
 
 plugins:
   - jekyll-sitemap
