@@ -13,7 +13,7 @@ A Jekyll-based GitHub Pages site at `www.gymscript.app` containing ready-to-use 
 
 ## Architecture
 
-Plain Jekyll — no theme gem, no CSS framework. Custom layouts and a single CSS file. One JavaScript file for the import link. Content managed via Jekyll collections.
+Plain Jekyll — no theme gem, no CSS framework. Custom layouts, a single CSS file, and a custom Ruby plugin for build-time base64 encoding. Content managed via Jekyll collections.
 
 **File structure:**
 
@@ -27,12 +27,14 @@ _layouts/
   default.html       # base: <head>, <nav>, <footer>
   workout.html       # extends default, workout page structure
   category.html      # extends default, lists workouts in a category
+_plugins/
+  base64_filter.rb   # adds {{ script | base64_encode }} Liquid filter
 pages/
   index.md           # homepage — /
   workouts.md        # /workouts/ — all categories
 assets/
   css/main.css
-  js/import-link.js  # base64-encodes script, sets href on "Open in GymScript" button
+  js/copy-script.js  # clipboard copy for the script block only
 _config.yml
 Gemfile
 ```
@@ -41,6 +43,8 @@ Gemfile
 - `url: https://www.gymscript.app`
 - `collections: { workouts: { output: true, permalink: /workouts/:path/ } }`
 - `plugins: [jekyll-sitemap]`
+
+Note: `_plugins/` runs at build time via GitHub Actions (`bundle exec jekyll build`). GitHub Pages' native builder uses safe mode (no custom plugins), but the existing Actions workflow bypasses this.
 
 ---
 
@@ -72,6 +76,8 @@ script: |
 
 The `script` field is both the visible SEO content and the source for the import link URL. The `exercises` list is used for `HowTo` structured data steps.
 
+**Multi-language (future):** Front matter will gain a `lang` field (default `en`). Translated workout files live alongside English ones with the same slug. URL structure becomes `/workouts/<lang>/<category>/<slug>/` when `lang != en`, keeping `/workouts/<category>/<slug>/` for English to avoid breaking existing URLs.
+
 ---
 
 ## URL Structure
@@ -80,8 +86,14 @@ The `script` field is both the visible SEO content and the source for the import
 /                                        homepage
 /workouts/                               all categories
 /workouts/strength/                      strength category
-/workouts/strength/push-day-beginner/    individual workout
-/workouts/hiit/20-min-full-body/         individual workout
+/workouts/strength/push-day-beginner/    individual workout (English)
+/workouts/hiit/20-min-full-body/         individual workout (English)
+```
+
+Future localised URLs (non-breaking addition):
+```
+/workouts/es/strength/push-day-beginner/
+/workouts/fr/hiit/20-min-full-body/
 ```
 
 Categories (strength, hiit, cardio, flexibility) are derived from the `category` front matter field. Each category requires a hand-authored Markdown file in `pages/` (e.g. `pages/strength.md`) using the `category.html` layout — Jekyll does not auto-generate these.
@@ -104,10 +116,40 @@ Categories (strength, hiit, cardio, flexibility) are derived from the `category`
 1. Breadcrumb: Home → Strength → Push Day Beginner
 2. `<h1>` title + meta row (category badge, duration, difficulty)
 3. Description paragraph (SEO prose)
-4. Script block: monospace inset, "Copy script" button (JS clipboard API)
-5. "Open in GymScript" primary button — `href` set by `import-link.js` to `https://gymscript.app/import?script=<base64>`
+4. Script block: monospace inset, "Copy script" button (`copy-script.js`, clipboard API)
+5. "Open in GymScript" primary button — `href` pre-rendered at build time: `https://gymscript.app/import?script={{ page.script | base64_encode | url_encode }}`
 6. Download prompt: "Don't have GymScript? Free on iOS & Android" → App Store / Play Store links
 7. Back link to category page
+
+---
+
+## Import Link — Build-Time Generation
+
+`_plugins/base64_filter.rb` adds a `base64_encode` Liquid filter:
+
+```ruby
+require "base64"
+
+module Jekyll
+  module Base64Filter
+    def base64_encode(input)
+      Base64.strict_encode64(input.to_s)
+    end
+  end
+end
+
+Liquid::Template.register_filter(Jekyll::Base64Filter)
+```
+
+Usage in `workout.html` layout:
+```liquid
+{% assign encoded = page.script | base64_encode | url_encode %}
+<a href="https://gymscript.app/import?script={{ encoded }}">Open in GymScript</a>
+```
+
+This produces a fully resolved `href` in the static HTML — no JavaScript required for the import button. The encoding matches `encodeScriptForLink` in gymscript's `src/lib/linkImport.ts` (`Base64.strict_encode64` = standard base64, which `decodeImportedScript` handles).
+
+`copy-script.js` remains for the clipboard copy button only (progressive enhancement — the script text is visible and selectable without JS).
 
 ---
 
@@ -128,17 +170,6 @@ Dark palette matching GymScript's web UI:
 - Max content width: `720px`, centred
 - Responsive grid on category pages: single column on mobile, 2-col on wider viewports
 - No images required for MVP
-
----
-
-## Import Link
-
-`assets/js/import-link.js` runs on workout pages. It:
-1. Reads the script text from a `<pre data-workout-script>` element
-2. Base64-encodes it using `btoa(String.fromCharCode(...new TextEncoder().encode(script)))`  — matching `encodeScriptForLink` in gymscript's `src/lib/linkImport.ts`
-3. Sets the `href` on the `[data-import-btn]` anchor to `https://gymscript.app/import?script=<encoded>`
-
-The button is rendered as a valid `<a href="https://gymscript.app/import">` in the static HTML (no-JS fallback lands on the gymscript.app import page which shows App Store links).
 
 ---
 
@@ -175,7 +206,7 @@ The button is rendered as a valid `<a href="https://gymscript.app/import">` in t
 - Colour contrast ≥ 4.5:1 for all text/bg combinations
 - `aria-label` on icon-only buttons (e.g. Copy)
 - `role="region"` + `aria-label` on the script block
-- `lang="en"` on `<html>`
+- `lang="en"` on `<html>` (updated to match `page.lang` when multi-language ships)
 
 ---
 
@@ -193,6 +224,7 @@ No npm, no build pipeline beyond the existing GitHub Actions workflow.
 ## Out of Scope (this phase)
 
 - Exercise library pages (planned for later as part of "Option C")
+- Multi-language workout content (structure planned above, implementation deferred)
 - Search / filtering on the category page
 - User-submitted workouts
 - Analytics
