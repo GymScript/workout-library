@@ -169,6 +169,7 @@ Dark palette matching GymScript's web UI:
 - Fluid type: `clamp()` for headings and body, no hard pixel breakpoints for font sizes
 - Max content width: `720px`, centred
 - Responsive grid on category pages: single column on mobile, 2-col on wider viewports
+- Dark default; light mode via `@media (prefers-color-scheme: light)` overriding CSS custom properties — no JS required
 - No images required for MVP
 
 ---
