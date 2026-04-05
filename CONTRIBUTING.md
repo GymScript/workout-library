@@ -50,4 +50,3 @@ Current categories: `strength`, `hiit`. To add a new category, create a `_pages/
 
 - Make sure the workout actually works — ideally one you've done yourself
 - Keep the script concise; one exercise per line
-- Use standard exercise names so GymScript can recognise them
