@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<div class="container">
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/workouts/' | relative_url }}">Workouts</a></li>
+      <li><span aria-current="page">{{ page.title }}</span></li>
+    </ol>
+  </nav>
+
+  <header class="category-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="category-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% assign workouts = site.workouts | where: "category", page.slug | sort: "title" %}
+  {% if workouts.size > 0 %}
+  <ul class="workout-grid" role="list">
+    {% for workout in workouts %}
+    <li class="workout-card">
+      <a href="{{ workout.url | relative_url }}">
+        <h2 class="workout-card__title">{{ workout.title }}</h2>
+        <p class="workout-card__desc">{{ workout.description }}</p>
+        <div class="workout-card__meta">
+          {% if workout.duration %}<span class="badge">{{ workout.duration }}</span>{% endif %}
+          {% if workout.difficulty %}<span class="badge">{{ workout.difficulty }}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p style="color: var(--muted);">No workouts yet in this category.</p>
+  {% endif %}
+</div>
