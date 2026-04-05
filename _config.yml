@@ -6,11 +6,18 @@ url: https://www.gymscript.app
 baseurl: ""
 
 collections:
+  pages:
+    output: true
   workouts:
     output: true
     permalink: /workouts/:path/
 
 defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
   - scope:
       path: ""
       type: workouts
