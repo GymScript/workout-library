@@ -17,7 +17,7 @@ permalink: /
     </div>
   </section>
 
-  <p class="section-heading">Featured Workouts</p>
+  <h2 class="section-heading">Featured Workouts</h2>
 
   {% assign featured = site.workouts | where: "featured", true | sort: "title" %}
   {% if featured.size == 0 %}
@@ -28,7 +28,7 @@ permalink: /
     {% for workout in featured limit: 4 %}
     <li class="workout-card">
       <a href="{{ workout.url | relative_url }}">
-        <h2 class="workout-card__title">{{ workout.title }}</h2>
+        <h3 class="workout-card__title">{{ workout.title }}</h3>
         <p class="workout-card__desc">{{ workout.description }}</p>
         <div class="workout-card__meta">
           <span class="badge badge--accent">{{ workout.category_label }}</span>

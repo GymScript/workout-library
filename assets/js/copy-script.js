@@ -5,6 +5,8 @@
 
   if (!btn || !pre || !navigator.clipboard) return;
 
+  var originalLabel = btn.getAttribute("aria-label");
+
   btn.addEventListener("click", function () {
     navigator.clipboard.writeText(pre.textContent).then(function () {
       var original = btn.textContent;
@@ -12,7 +14,7 @@
       btn.setAttribute("aria-label", "Script copied to clipboard");
       setTimeout(function () {
         btn.textContent = original;
-        btn.setAttribute("aria-label", "Copy workout script to clipboard");
+        btn.setAttribute("aria-label", originalLabel);
       }, 2000);
     });
   });
