@@ -1,0 +1,73 @@
+---
+layout: default
+---
+<div class="container">
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/workouts/' | relative_url }}">Workouts</a></li>
+      <li><a href="{{ '/workouts/' | relative_url }}{{ page.category }}/">{{ page.category_label }}</a></li>
+      <li><span aria-current="page">{{ page.title }}</span></li>
+    </ol>
+  </nav>
+
+  <article>
+    <header class="workout-header">
+      <h1>{{ page.title }}</h1>
+      <div class="workout-meta" role="list" aria-label="Workout details">
+        <span class="badge badge--accent" role="listitem">{{ page.category_label }}</span>
+        {% if page.duration %}<span class="badge" role="listitem">{{ page.duration }}</span>{% endif %}
+        {% if page.difficulty %}<span class="badge" role="listitem">{{ page.difficulty }}</span>{% endif %}
+      </div>
+    </header>
+
+    <p class="workout-description">{{ page.description }}</p>
+
+    <section class="script-block" role="region" aria-label="Workout script">
+      <div class="script-block__header">
+        <span class="script-block__label">Workout Script</span>
+        <button class="btn btn--ghost" data-copy-script aria-label="Copy workout script to clipboard">Copy</button>
+      </div>
+      <pre data-workout-script>{{ page.script | strip | escape }}</pre>
+    </section>
+
+    {% assign encoded_script = page.script | strip | base64_encode %}
+    <a href="https://gymscript.app/import?script={{ encoded_script }}"
+       class="btn btn--primary"
+       rel="noopener"
+       aria-label="Open this workout in the GymScript app">
+      Open in GymScript
+    </a>
+
+    <div class="download-prompt">
+      <p>Don&rsquo;t have GymScript? It&rsquo;s free on iOS &amp; Android.</p>
+      <div class="download-prompt__links">
+        <a href="https://apps.apple.com/app/gymscript/id6751173133"
+           class="btn btn--store"
+           rel="noopener noreferrer">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript"
+           class="btn btn--store"
+           rel="noopener noreferrer">Google Play</a>
+      </div>
+    </div>
+
+    <a href="{{ '/workouts/' | relative_url }}{{ page.category }}/" class="back-link">&larr; Back to {{ page.category_label }}</a>
+  </article>
+
+  {% if page.exercises %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "{{ page.title | escape }} Workout",
+    "description": "{{ page.description | escape }}",
+    "step": [
+      {% for exercise in page.exercises %}
+      {"@type": "HowToStep", "name": "{{ exercise | escape }}"}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+</div>
+<script src="{{ '/assets/js/copy-script.js' | relative_url }}" defer></script>
