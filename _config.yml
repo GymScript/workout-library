@@ -1,0 +1,13 @@
+url: "https://www.gymscript.app"
+
+collections:
+  workouts:
+    output: true
+    permalink: /workouts/:path/
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - docs/
+  - vendor/
