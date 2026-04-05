@@ -12,8 +12,8 @@ permalink: /
     <h1>Ready-to-run workouts for GymScript</h1>
     <p>Browse free workout scripts. One tap opens them directly in the app — sets, reps, and rest timers included.</p>
     <div class="hero-cta">
-      <a href="{{ '/workouts/' | relative_url }}" class="btn btn--primary" style="width:auto;">Browse Workouts</a>
-      <a href="https://gymscript.app" class="btn btn--ghost" style="padding:0.65em 1.25em;" rel="noopener">Get GymScript</a>
+      <a href="{{ '/workouts/' | relative_url }}" class="btn btn--primary">Browse Workouts</a>
+      <a href="https://gymscript.app" class="btn btn--ghost" rel="noopener">Get GymScript</a>
     </div>
   </section>
 
@@ -26,17 +26,7 @@ permalink: /
 
   <ul class="workout-grid" role="list">
     {% for workout in featured limit: 4 %}
-    <li class="workout-card">
-      <a href="{{ workout.url | relative_url }}">
-        <h3 class="workout-card__title">{{ workout.title }}</h3>
-        <p class="workout-card__desc">{{ workout.description }}</p>
-        <div class="workout-card__meta">
-          <span class="badge badge--accent">{{ workout.category_label }}</span>
-          {% if workout.duration %}<span class="badge">{{ workout.duration }}</span>{% endif %}
-          {% if workout.difficulty %}<span class="badge">{{ workout.difficulty }}</span>{% endif %}
-        </div>
-      </a>
-    </li>
+      {% include workout-card.html workout=workout show_category=true %}
     {% endfor %}
   </ul>
 

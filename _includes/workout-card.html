@@ -1,0 +1,15 @@
+<li class="workout-card">
+  <a href="{{ include.workout.url | relative_url }}">
+    {% if include.heading_level == "h2" %}
+    <h2 class="workout-card__title">{{ include.workout.title }}</h2>
+    {% else %}
+    <h3 class="workout-card__title">{{ include.workout.title }}</h3>
+    {% endif %}
+    <p class="workout-card__desc">{{ include.workout.description }}</p>
+    <div class="workout-card__meta">
+      {% if include.show_category %}<span class="badge badge--accent">{{ include.workout.category_label }}</span>{% endif %}
+      {% if include.workout.duration %}<span class="badge">{{ include.workout.duration }}</span>{% endif %}
+      {% if include.workout.difficulty %}<span class="badge">{{ include.workout.difficulty }}</span>{% endif %}
+    </div>
+  </a>
+</li>

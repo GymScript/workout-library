@@ -405,6 +405,7 @@ p { max-width: 65ch; }
 }
 
 /* ---- Category page ---- */
+.category-empty { color: var(--muted); }
 .category-header { margin-bottom: var(--sp-xl); }
 .category-header h1 { margin-bottom: var(--sp-sm); }
 .category-description {
@@ -414,6 +415,7 @@ p { max-width: 65ch; }
 }
 
 /* ---- Workouts index ---- */
+.workouts-intro { color: var(--muted); margin-bottom: var(--sp-2xl); max-width: 55ch; }
 .category-list { display: flex; flex-direction: column; gap: var(--sp-2xl); }
 .category-section h2 { margin-bottom: var(--sp-lg); }
 .view-all {
@@ -449,6 +451,7 @@ p { max-width: 65ch; }
   min-width: 160px;
   width: auto;
 }
+.hero-cta .btn--ghost { padding: 0.65em 1.25em; }
 
 .section-heading {
   font-size: 0.75rem;

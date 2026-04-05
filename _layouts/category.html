@@ -21,19 +21,10 @@ layout: default
   {% if workouts.size > 0 %}
   <ul class="workout-grid" role="list">
     {% for workout in workouts %}
-    <li class="workout-card">
-      <a href="{{ workout.url | relative_url }}">
-        <h2 class="workout-card__title">{{ workout.title }}</h2>
-        <p class="workout-card__desc">{{ workout.description }}</p>
-        <div class="workout-card__meta">
-          {% if workout.duration %}<span class="badge">{{ workout.duration }}</span>{% endif %}
-          {% if workout.difficulty %}<span class="badge">{{ workout.difficulty }}</span>{% endif %}
-        </div>
-      </a>
-    </li>
+      {% include workout-card.html workout=workout heading_level="h2" %}
     {% endfor %}
   </ul>
   {% else %}
-  <p style="color: var(--muted);">No workouts yet in this category.</p>
+  <p class="category-empty">No workouts yet in this category.</p>
   {% endif %}
 </div>
