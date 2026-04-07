@@ -13,7 +13,6 @@ permalink: /
     <p>Browse free workout scripts. One tap opens them directly in the app — sets, reps, and rest timers included.</p>
     <div class="hero-cta">
       <a href="{{ '/workouts/' | relative_url }}" class="btn btn--primary">Browse Workouts</a>
-      <a href="https://gymscript.app" class="btn btn--ghost" rel="noopener">Get GymScript</a>
     </div>
   </section>
 
@@ -34,8 +33,12 @@ permalink: /
     <h2>What is GymScript?</h2>
     <p>Write your workout in plain words — GymScript turns it into sets, reps, and timers. No account needed. Free on iOS and Android.</p>
     <div class="about-gymscript__links">
-      <a href="https://apps.apple.com/app/gymscript/id6751173133" class="btn btn--store" rel="noopener noreferrer">App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript" class="btn btn--store" rel="noopener noreferrer">Google Play</a>
+      <a href="https://apps.apple.com/app/gymscript/id6751173133" class="store-badge" rel="noopener noreferrer">
+        <img src="/assets/img/badge-app-store.svg" alt="Download on the App Store" height="40">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript" class="store-badge" rel="noopener noreferrer">
+        <img src="/assets/img/badge-google-play.svg" alt="Get it on Google Play" height="40">
+      </a>
     </div>
   </div>
 </div>

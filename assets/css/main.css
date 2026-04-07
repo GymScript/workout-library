@@ -240,17 +240,9 @@ p { max-width: 65ch; }
   border-color: var(--muted);
 }
 
-.btn--store {
-  background: var(--surface);
-  color: var(--text);
-  border-color: var(--border);
-  flex: 1;
-  min-width: 130px;
-}
-.btn--store:hover,
-.btn--store:focus-visible {
-  border-color: var(--accent);
-  color: var(--accent);
+.store-badge {
+  display: inline-block;
+  line-height: 0;
 }
 
 /* ---- Breadcrumb ---- */
@@ -450,8 +442,11 @@ p { max-width: 65ch; }
 .hero-cta .btn {
   min-width: 160px;
   width: auto;
+  padding: 0.65em 1.25em;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0;
 }
-.hero-cta .btn--ghost { padding: 0.65em 1.25em; }
 
 .section-heading {
   font-size: 0.75rem;
