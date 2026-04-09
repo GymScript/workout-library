@@ -33,10 +33,13 @@ ul[role="list"], ol[role="list"] { list-style: none; }
     --surface:       #ffffff;
     --border:        #e5e7eb;
     --text:          #111217;
-    --muted:         #6b7280;
+    --muted:         #595f6b;
     --accent:        #1d6fc4;
     --accent-strong: #1558a8;
   }
+
+  .btn--primary { color: #ffffff; }
+  .badge--accent { color: var(--accent-strong); }
 }
 
 /* ---- Base ---- */
@@ -213,7 +216,7 @@ p { max-width: 65ch; }
 
 .btn--primary {
   background: var(--accent);
-  color: #0b0b0c; /* intentionally dark in both modes — ensures contrast on blue accent */
+  color: #0b0b0c;
   border-color: var(--accent);
   width: 100%;
   padding: 0.9em 1.5em;

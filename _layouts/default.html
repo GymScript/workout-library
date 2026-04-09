@@ -11,6 +11,7 @@
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
   <meta property="og:image" content="{{ '/assets/icon.png' | absolute_url }}">
+  <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
@@ -35,10 +36,10 @@
       <p>Free workouts for the <a href="https://gymscript.app" rel="noopener">GymScript app</a></p>
       <div class="footer-store-links">
         <a href="https://apps.apple.com/app/gymscript/id6751173133" class="store-badge" rel="noopener noreferrer">
-          <img src="/assets/img/badge-app-store.svg" alt="Download on the App Store" height="40">
+          <img src="/assets/img/badge-app-store.svg" alt="Download on the App Store" width="120" height="40">
         </a>
         <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript" class="store-badge" rel="noopener noreferrer">
-          <img src="/assets/img/badge-google-play.svg" alt="Get it on Google Play" height="40">
+          <img src="/assets/img/badge-google-play.svg" alt="Get it on Google Play" width="135" height="40">
         </a>
       </div>
       <p class="footer-copy"><a href="https://github.com/GymScript/workout-library" rel="noopener noreferrer">Submit a workout</a></p>
