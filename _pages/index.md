@@ -1,6 +1,5 @@
 ---
 layout: default
-title: GymScript Workout Library
 description: >-
   Free ready-to-run workout scripts for GymScript. Browse by category,
   copy a script, and open it directly in the app.
@@ -34,10 +33,10 @@ permalink: /
     <p>Write your workout in plain words — GymScript turns it into sets, reps, and timers. No account needed. Free on iOS and Android.</p>
     <div class="about-gymscript__links">
       <a href="https://apps.apple.com/app/gymscript/id6751173133" class="store-badge" rel="noopener noreferrer">
-        <img src="/assets/img/badge-app-store.svg" alt="Download on the App Store" height="40">
+        <img src="/assets/img/badge-app-store.svg" alt="Download on the App Store" width="120" height="40">
       </a>
       <a href="https://play.google.com/store/apps/details?id=loveboat.gymscript" class="store-badge" rel="noopener noreferrer">
-        <img src="/assets/img/badge-google-play.svg" alt="Get it on Google Play" height="40">
+        <img src="/assets/img/badge-google-play.svg" alt="Get it on Google Play" width="135" height="40">
       </a>
     </div>
   </div>
