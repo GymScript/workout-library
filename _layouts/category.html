@@ -36,6 +36,22 @@ layout: default
       {% include workout-card.html workout=workout heading_level="h2" %}
     {% endfor %}
   </ul>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for workout in workouts %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": "{{ site.url }}{{ workout.url | remove_first: 'index.html' }}"
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+  </script>
   {% else %}
   <p class="category-empty">No workouts yet in this category.</p>
   {% endif %}

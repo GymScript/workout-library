@@ -56,6 +56,18 @@ layout: default
     </div>
 
     <a href="{{ '/workouts/' | relative_url }}{{ page.category }}/" class="back-link">&larr; Back to {{ page.category_label }}</a>
+
+    {% assign related = site.workouts | where: "category", page.category | where_exp: "item", "item.url != page.url" | sample: 3 %}
+    {% if related.size > 0 %}
+    <section class="related-workouts" aria-labelledby="related-heading">
+      <h2 id="related-heading">More {{ page.category_label }} Workouts</h2>
+      <ul class="workout-grid" role="list">
+        {% for workout in related %}
+          {% include workout-card.html workout=workout heading_level="h3" %}
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
   </article>
 
   <script type="application/ld+json">
