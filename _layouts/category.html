@@ -5,7 +5,6 @@ layout: default
   <nav aria-label="Breadcrumb" class="breadcrumb">
     <ol>
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/workouts/' | relative_url }}">Workouts</a></li>
       <li><span aria-current="page">{{ page.title }}</span></li>
     </ol>
   </nav>
@@ -23,8 +22,7 @@ layout: default
     "@type": "BreadcrumbList",
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
-      {"@type": "ListItem", "position": 2, "name": "Workouts", "item": "{{ site.url }}/workouts/"},
-      {"@type": "ListItem", "position": 3, "name": "{{ page.title | escape }}"}
+      {"@type": "ListItem", "position": 2, "name": "{{ page.title | escape }}"}
     ]
   }
   </script>

@@ -10,9 +10,6 @@ permalink: /
   <section class="hero">
     <h1>Ready-to-run workouts for GymScript</h1>
     <p>Browse free workout scripts. One tap opens them directly in the app — sets, reps, and rest timers included.</p>
-    <div class="hero-cta">
-      <a href="{{ '/workouts/' | relative_url }}" class="btn btn--primary">Browse Workouts</a>
-    </div>
   </section>
 
   <h2 class="section-heading">Featured Workouts</h2>
