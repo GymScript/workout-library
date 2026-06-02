@@ -1,6 +1,6 @@
 # Workout Library
 
-Static Jekyll site serving ready-to-use workout scripts at [www.gymscript.app](https://www.gymscript.app). Each page targets a search keyword, presents a copyable workout script, and links directly into the GymScript app via a deep-link import button.
+Static Jekyll site serving ready-to-use workout scripts at [workouts.gymscript.app](https://workouts.gymscript.app). Each page targets a search keyword, presents a copyable workout script, and links directly into the GymScript app via a deep-link import button.
 
 ## Stack
 
