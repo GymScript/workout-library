@@ -6,7 +6,7 @@ layout: default
     <ol>
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
       <li><a href="{{ '/workouts/' | relative_url }}">Workouts</a></li>
-      <li><a href="{{ '/workouts/' | relative_url }}{{ page.category }}/">{{ page.category_label }}</a></li>
+      <li><a href="{{ '/' | relative_url }}{{ page.category }}/">{{ page.category_label }}</a></li>
       <li><span aria-current="page">{{ page.title }}</span></li>
     </ol>
   </nav>
@@ -55,7 +55,7 @@ layout: default
       </div>
     </div>
 
-    <a href="{{ '/workouts/' | relative_url }}{{ page.category }}/" class="back-link">&larr; Back to {{ page.category_label }}</a>
+    <a href="{{ '/' | relative_url }}{{ page.category }}/" class="back-link">&larr; Back to {{ page.category_label }}</a>
 
     {% assign related = site.workouts | where: "category", page.category | where_exp: "item", "item.url != page.url" | sample: 3 %}
     {% if related.size > 0 %}
@@ -77,7 +77,7 @@ layout: default
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
       {"@type": "ListItem", "position": 2, "name": "Workouts", "item": "{{ site.url }}/workouts/"},
-      {"@type": "ListItem", "position": 3, "name": "{{ page.category_label | escape }}", "item": "{{ site.url }}/workouts/{{ page.category }}/"},
+      {"@type": "ListItem", "position": 3, "name": "{{ page.category_label | escape }}", "item": "{{ site.url }}/{{ page.category }}/"},
       {"@type": "ListItem", "position": 4, "name": "{{ page.title | escape }}"}
     ]
   }

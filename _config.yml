@@ -2,7 +2,7 @@ title: GymScript Workout Library
 description: >-
   Free ready-to-run workout scripts for the GymScript app.
   Browse by category, copy a script, and open it directly in the app.
-url: https://www.gymscript.app
+url: https://workouts.gymscript.app
 baseurl: ""
 
 collections:
@@ -10,7 +10,7 @@ collections:
     output: true
   workouts:
     output: true
-    permalink: /workouts/:path/
+    permalink: /:path/
 
 defaults:
   - scope:
