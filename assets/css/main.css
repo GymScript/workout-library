@@ -430,7 +430,7 @@ p { max-width: 65ch; }
 
 /* ---- Related workouts ---- */
 .related-workouts { margin-top: var(--sp-2xl); }
-.related-workouts h2 { margin-bottom: var(--sp-lg); }
+.related-workouts h2 { margin-bottom: var(--sp-xl); }
 
 /* ---- Homepage hero ---- */
 .hero {
