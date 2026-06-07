@@ -11,7 +11,7 @@
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
   <meta property="og:image" content="{{ '/assets/icon.png' | absolute_url }}">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
   <meta name="twitter:description" content="{{ page.description | default: site.description | strip_html | escape }}">
   <meta name="twitter:image" content="{{ '/assets/icon.png' | absolute_url }}">
@@ -25,6 +25,10 @@
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="nav-logo">GymScript Workouts</a>
       <ul class="nav-links" role="list">
+        <li><a href="{{ '/strength/' | relative_url }}">Strength</a></li>
+        <li><a href="{{ '/hiit/' | relative_url }}">HIIT</a></li>
+        <li><a href="{{ '/mobility/' | relative_url }}">Mobility</a></li>
+        <li><a href="{{ '/bodyweight/' | relative_url }}">Bodyweight</a></li>
         <li><a href="https://gymscript.app" rel="noopener">Get the App</a></li>
       </ul>
     </div>
