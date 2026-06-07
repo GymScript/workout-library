@@ -408,6 +408,11 @@ p { max-width: 65ch; }
   font-size: 1.05rem;
   max-width: 55ch;
 }
+.category-count {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: var(--sp-xs);
+}
 
 /* ---- Workouts index ---- */
 .workouts-intro { color: var(--muted); margin-bottom: var(--sp-2xl); max-width: 55ch; }
@@ -423,11 +428,15 @@ p { max-width: 65ch; }
 .view-all:hover,
 .view-all:focus-visible { color: var(--accent); }
 
+/* ---- Related workouts ---- */
+.related-workouts { margin-top: var(--sp-2xl); }
+.related-workouts h2 { margin-bottom: var(--sp-lg); }
+
 /* ---- Homepage hero ---- */
 .hero {
   text-align: center;
-  padding: var(--sp-2xl) 0;
-  margin-bottom: var(--sp-2xl);
+  padding: var(--sp-xl) 0;
+  margin-bottom: var(--sp-xl);
 }
 .hero h1 { margin-bottom: var(--sp-md); }
 .hero p {

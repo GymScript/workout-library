@@ -9,11 +9,13 @@ layout: default
     </ol>
   </nav>
 
+  {% assign workouts = site.workouts | where: "category", page.slug | sort: "title" %}
   <header class="category-header">
     <h1>{{ page.title }}</h1>
     {% if page.description %}
     <p class="category-description">{{ page.description }}</p>
     {% endif %}
+    <p class="category-count">{{ workouts.size }} workout{% if workouts.size != 1 %}s{% endif %}</p>
   </header>
 
   <script type="application/ld+json">
@@ -27,7 +29,6 @@ layout: default
   }
   </script>
 
-  {% assign workouts = site.workouts | where: "category", page.slug | sort: "title" %}
   {% if workouts.size > 0 %}
   <ul class="workout-grid" role="list">
     {% for workout in workouts %}
@@ -44,6 +45,7 @@ layout: default
       {
         "@type": "ListItem",
         "position": {{ forloop.index }},
+        "name": "{{ workout.title | escape }}",
         "url": "{{ site.url }}{{ workout.url | remove_first: 'index.html' }}"
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}

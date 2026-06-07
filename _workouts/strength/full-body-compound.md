@@ -8,6 +8,7 @@ description: >-
   vertical pull. Three rounds, compound-focused. 60 minutes.
 duration: "60 min"
 difficulty: Intermediate
+featured: true
 exercises:
   - Barbell Back Squat
   - Deadlift

@@ -1,10 +1,19 @@
 ---
 layout: default
+title: Free Workout Scripts
 description: >-
   Free ready-to-run workout scripts for GymScript. Browse by category,
   copy a script, and open it directly in the app.
 permalink: /
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GymScript Workout Library",
+  "url": "https://workouts.gymscript.app/"
+}
+</script>
 
 <div class="container">
   <section class="hero">
